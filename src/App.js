@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
-import { Container } from 'reactstrap';
+import { Container, Form, FormGroup, Label, Input } from 'reactstrap';
 import Papa from 'papaparse';
 import ReactApexChart from 'react-apexcharts';
 
-import Chart from './components/Chart';
-import dataset from './covid.csv';
+import dataset from './popn.csv';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [dates, setDates] = useState([]);
-  const [cases, setCases] = useState([]);
-  const [deaths, setDeaths] = useState([]);
-  const [recoveries, setRecoveries] = useState([]);
+  const [years, setYears] = useState([]);
+  const [populations, setPopulations] = useState([]);
+  const [changes, setChanges] = useState([]);
+  const [urbans, setUrbans] = useState([]);
+  const [chartType, setChartType] = useState("line");
 
   useEffect(() => {
     Papa.parse(dataset, {
@@ -20,10 +20,10 @@ function App() {
       header: true,
       complete: function(res) {
         for(var i = 0; i < res.data.length; i++){
-          setDates(dates => [...dates, String(res.data[i].Date)]);
-          setCases(cases => [...cases, parseInt(res.data[i].New)]);
-          setDeaths(deaths => [...deaths, parseInt(res.data[i].Deaths)]);
-          setRecoveries(recoveries => [...recoveries, parseInt(res.data[i].Recoveries)]);
+          setYears(years => [...years, String(res.data[i].Year)]);
+          setPopulations(populations => [...populations, parseInt(res.data[i].Population)]);
+          setChanges(changes => [...changes, parseInt(res.data[i].Change)]);
+          setUrbans(urbans => [...urbans, parseInt(res.data[i].Urban)]);
         }
       }
     });
@@ -31,16 +31,16 @@ function App() {
 
   const series = [
     {
-      name: "Cases",
-      data: cases
+      name: "Population",
+      data: populations
     },
     {
-      name: "Deaths",
-      data: deaths
+      name: "Urban Population",
+      data: urbans
     },
     {
-      name: "Recoveries",
-      data: recoveries
+      name: "Change from Previous Year",
+      data: changes
     }
   ];
 
@@ -52,12 +52,12 @@ function App() {
       curve: "smooth",
     },
     xaxis: {
-      type: "datetime",
-      categories: dates
+      type: "category",
+      categories: years
     },
     tooltip: {
       x: {
-        format: "MM/dd/yy"
+        format: "yyyy"
       }
     }
   };
@@ -65,14 +65,25 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <header><h1><b>COVID-19 Cases Dashboard</b></h1></header>
+        <header className="text-center"><h1><b>🇵🇭 The Philippine Population Through the Years 🇵🇭</b></h1></header>
         <hr></hr>
+
+        <Form>
+          <FormGroup>
+            <Label for="selectChart"><b>Select Chart Type</b></Label>
+            <Input  onChange={e => setChartType(e.target.value)} type="select" name="chart" id="selectChart">
+              <option value="line">Line Chart</option>
+              <option value="area">Area Chart</option>
+              <option value="bar">Bar Chart</option>
+            </Input>
+          </FormGroup>
+        </Form>
 
         <ReactApexChart
           series={series}
           options={options}
-          type="area"
-          height={350}
+          type={chartType}
+          height={500}
         />
       </Container>
     </div>
