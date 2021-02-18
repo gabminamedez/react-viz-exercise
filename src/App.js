@@ -13,17 +13,13 @@ function App() {
       height: 400
     },
     title: {
-      text: "The Philippine Population Through the Years",
+      text: "",
       align: "center",
       style: { fontSize: "18px", fontWeight: "bold" }
     },
     xaxis: {
-      title: { text: "Year" },
       type: "category",
       categories: [1955, 1960, 1965, 1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020]
-    },
-    yaxis: {
-      title: { text: "Population Quantity" }
     },
     colors: ["#f44336", "#03a9f4", "#ffeb3b"],
     tooltip: {
@@ -76,7 +72,7 @@ function App() {
   const handleTitleChange = (e) => {
     if(e.target.value === ""){
       ApexCharts.exec("chart", "updateOptions", {
-        title: { text: "The Philippine Population Through the Years" }
+        title: { text: "" }
       }, true);
     }
     else{
@@ -89,7 +85,7 @@ function App() {
   const handlexLabelChange = (e) => {
     if(e.target.value === ""){
       ApexCharts.exec("chart", "updateOptions", {
-        xaxis: { ...options.xaxis, title: { text: "Year" } }
+        xaxis: { ...options.xaxis, title: { text: "" } }
       }, true);
     }
     else{
@@ -102,7 +98,7 @@ function App() {
   const handleyLabelChange = (e) => {
     if(e.target.value === ""){
       ApexCharts.exec("chart", "updateOptions", {
-        yaxis: { title: { text: "Population Quantity" } }
+        yaxis: { title: { text: "" } }
       }, true);
     }
     else{
@@ -157,20 +153,20 @@ function App() {
 
           <FormGroup>
             <Label for="title"><b>Title</b></Label>
-            <Input type="text" onChange={handleTitleChange} placeholder={options.title.text} id="title" />
+            <Input type="text" onChange={handleTitleChange} placeholder="Add Title" id="title" />
           </FormGroup>
           
           <Row>
             <Col>
               <FormGroup>
                 <Label for="xLabel"><b>X-Axis Label</b></Label>
-                <Input type="text" onChange={handlexLabelChange} placeholder={options.xaxis.title.text} id="xLabel" />
+                <Input type="text" onChange={handlexLabelChange} placeholder="Add X-Axis Label" id="xLabel" />
               </FormGroup>
             </Col>
             <Col>
               <FormGroup>
                 <Label for="yLabel"><b>Y-Axis Label</b></Label>
-                <Input type="text" onChange={handleyLabelChange} placeholder={options.yaxis.title.text} id="yLabel" />
+                <Input type="text" onChange={handleyLabelChange} placeholder="Add Y-Axis Label" id="yLabel" />
               </FormGroup>
             </Col>
           </Row>
