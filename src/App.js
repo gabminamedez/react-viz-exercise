@@ -10,7 +10,7 @@ function App() {
     chart: {
       id: "chart",
       type: "line",
-      height: 400,
+      height: 612,
       toolbar: { tools: { selection: false, zoom: false, zoomin: false, zoomout: false, pan: false, reset: false }
       }
     },
@@ -138,42 +138,48 @@ function App() {
         <header className="text-center"><h1 className="heading"><b>🇵🇭 The Philippine Population Through the Years 🇵🇭</b></h1></header>
         <br />
 
-        <Button color="info" onClick={toggle} className="heading">{btnText}</Button>
-        
-        <Collapse isOpen={isOpen}>
-          <br />
-          <FormGroup>
-            <Label for="selectChart"><b>Chart Type</b></Label>
-            <Input size="sm" onChange={handleTypeChange} type="select" name="chartType" id="selectChart">
-              <option value="line">Line Chart</option>
-              <option value="area">Area Chart</option>
-              <option value="bar">Bar Chart</option>
-            </Input>
-          </FormGroup>
+        <Row>
+          <Col>
+            <Button color="info" onClick={toggle} className="heading">{btnText}</Button>
+            
+            <Collapse isOpen={isOpen}>
+              <br />
+              <FormGroup>
+                <Label for="selectChart"><b>Chart Type</b></Label>
+                <Input size="sm" onChange={handleTypeChange} type="select" name="chartType" id="selectChart">
+                  <option value="line">Line Chart</option>
+                  <option value="area">Area Chart</option>
+                  <option value="bar">Bar Chart</option>
+                </Input>
+              </FormGroup>
 
-          <FormGroup>
-            <Label for="title"><b>Title</b></Label>
-            <Input size="sm" type="text" onChange={handleTitleChange} placeholder="Add Title" id="title" />
-          </FormGroup>
+              <FormGroup>
+                <Label for="title"><b>Title</b></Label>
+                <Input size="sm" type="text" onChange={handleTitleChange} placeholder="Add Title" id="title" />
+              </FormGroup>
 
-          <FormGroup>
-            <Label for="xLabel"><b>X-Axis Label</b></Label>
-            <Input size="sm" type="text" onChange={handlexLabelChange} placeholder="Add X-Axis Label" id="xLabel" />
-          </FormGroup>
+              <FormGroup>
+                <Label for="xLabel"><b>X-Axis Label</b></Label>
+                <Input size="sm" type="text" onChange={handlexLabelChange} placeholder="Add X-Axis Label" id="xLabel" />
+              </FormGroup>
 
-          <FormGroup>
-            <Label for="yLabel"><b>Y-Axis Label</b></Label>
-            <Input size="sm" type="text" onChange={handleyLabelChange} placeholder="Add Y-Axis Label" id="yLabel" />
-          </FormGroup>
+              <FormGroup>
+                <Label for="yLabel"><b>Y-Axis Label</b></Label>
+                <Input size="sm" type="text" onChange={handleyLabelChange} placeholder="Add Y-Axis Label" id="yLabel" />
+              </FormGroup>
 
-          <Row>
-            <Col><FormGroup><Label><b>Population Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor1Change} /></FormGroup></Col>
-            <Col><FormGroup><Label><b>Urban Population Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor2Change} /></FormGroup></Col>
-            <Col><FormGroup><Label><b>Change from Previous Year Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor3Change} /></FormGroup></Col>
-          </Row>
-        </Collapse>
+              <Row>
+                <Col><FormGroup><Label><b>Population Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor1Change} /></FormGroup></Col>
+                <Col><FormGroup><Label><b>Urban Population Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor2Change} /></FormGroup></Col>
+                <Col><FormGroup><Label><b>Change from Previous Year Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor3Change} /></FormGroup></Col>
+              </Row>
+            </Collapse>
+          </Col>
 
-        <div id="chart" />
+          <Col md="9">
+            <div id="chart" />
+          </Col>
+        </Row>
       </Container>
     </div>
   );
