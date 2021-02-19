@@ -34,13 +34,8 @@ function App() {
       curve: "smooth"
     },
     legend: {
-      position: "right",
+      position: "bottom",
     },
-    responsive: [
-      { breakpoint: 991,
-        options: { legend: { position: "bottom" } }
-      }
-    ],
     series: [
       { name: "Population", data: [22177058, 26269734, 30909988, 35803594, 41285742, 47357743, 54275822, 61895160, 69784088, 77991755, 86326250, 93966780, 102113212, 109581078] },
       { name: "Urban Population", data: [6365919, 7959850, 9770040, 11807882, 14684347, 17752900, 22943780, 29106432, 32515486, 35981065, 39435905, 42487934, 47078199, 52008603] },
@@ -168,11 +163,9 @@ function App() {
                 <Input size="sm" type="text" onChange={handleyLabelChange} placeholder="Add Y-Axis Label" id="yLabel" />
               </FormGroup>
 
-              <Row>
-                <Col><FormGroup><Label><b>Population Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor1Change} /></FormGroup></Col>
-                <Col><FormGroup><Label><b>Urban Population Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor2Change} /></FormGroup></Col>
-                <Col><FormGroup><Label><b>Change from Previous Year Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor3Change} /></FormGroup></Col>
-              </Row>
+              <FormGroup><Label><b>Population Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor1Change} /></FormGroup>
+              <FormGroup><Label><b>Urban Population Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor2Change} /></FormGroup>
+              <FormGroup><Label><b>Change from Previous Year Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor3Change} /></FormGroup>
             </Collapse>
           </Col>
 
