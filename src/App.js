@@ -139,12 +139,12 @@ function App() {
         <br />
 
         <Button color="info" onClick={toggle} className="heading">{btnText}</Button>
-        <br />
+        
         <Collapse isOpen={isOpen}>
           <br />
           <FormGroup>
             <Label for="selectChart"><b>Chart Type</b></Label>
-            <Input onChange={handleTypeChange} type="select" name="chartType" id="selectChart">
+            <Input size="sm" onChange={handleTypeChange} type="select" name="chartType" id="selectChart">
               <option value="line">Line Chart</option>
               <option value="area">Area Chart</option>
               <option value="bar">Bar Chart</option>
@@ -153,30 +153,25 @@ function App() {
 
           <FormGroup>
             <Label for="title"><b>Title</b></Label>
-            <Input type="text" onChange={handleTitleChange} placeholder="Add Title" id="title" />
+            <Input size="sm" type="text" onChange={handleTitleChange} placeholder="Add Title" id="title" />
           </FormGroup>
-          
+
+          <FormGroup>
+            <Label for="xLabel"><b>X-Axis Label</b></Label>
+            <Input size="sm" type="text" onChange={handlexLabelChange} placeholder="Add X-Axis Label" id="xLabel" />
+          </FormGroup>
+
+          <FormGroup>
+            <Label for="yLabel"><b>Y-Axis Label</b></Label>
+            <Input size="sm" type="text" onChange={handleyLabelChange} placeholder="Add Y-Axis Label" id="yLabel" />
+          </FormGroup>
+
           <Row>
-            <Col>
-              <FormGroup>
-                <Label for="xLabel"><b>X-Axis Label</b></Label>
-                <Input type="text" onChange={handlexLabelChange} placeholder="Add X-Axis Label" id="xLabel" />
-              </FormGroup>
-            </Col>
-            <Col>
-              <FormGroup>
-                <Label for="yLabel"><b>Y-Axis Label</b></Label>
-                <Input type="text" onChange={handleyLabelChange} placeholder="Add Y-Axis Label" id="yLabel" />
-              </FormGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col><FormGroup><Label><b>Population Color</b></Label><br /><CirclePicker onChange={handleColor1Change} /></FormGroup></Col>
-            <Col><FormGroup><Label><b>Urban Population Color</b></Label><br /><CirclePicker onChange={handleColor2Change} /></FormGroup></Col>
-            <Col><FormGroup><Label><b>Change from Previous Year Color</b></Label><br /><CirclePicker onChange={handleColor3Change} /></FormGroup></Col>
+            <Col><FormGroup><Label><b>Population Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor1Change} /></FormGroup></Col>
+            <Col><FormGroup><Label><b>Urban Population Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor2Change} /></FormGroup></Col>
+            <Col><FormGroup><Label><b>Change from Previous Year Color</b></Label><br /><CirclePicker circleSize={14} onChange={handleColor3Change} /></FormGroup></Col>
           </Row>
         </Collapse>
-        <br />
 
         <div id="chart" />
       </Container>
