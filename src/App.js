@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button, Container, FormGroup, Label, Input, Row, Col, Collapse } from 'reactstrap';
 import ApexCharts from 'apexcharts';
-import { CirclePicker, CompactPicker } from 'react-color';
+import { CirclePicker } from 'react-color';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,15 +11,7 @@ function App() {
       id: "chart",
       type: "line",
       height: 400,
-      toolbar: {
-        tools: {
-          selection: false,
-          zoom: false,
-          zoomin: false,
-          zoomout: false,
-          pan: false,
-          reset: false
-        }
+      toolbar: { tools: { selection: false, zoom: false, zoomin: false, zoomout: false, pan: false, reset: false }
       }
     },
     title: {
@@ -46,9 +38,7 @@ function App() {
     },
     responsive: [
       { breakpoint: 991,
-        options: {
-          legend: { position: "bottom" }
-        }
+        options: { legend: { position: "bottom" } }
       }
     ],
     series: [
