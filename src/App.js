@@ -10,7 +10,17 @@ function App() {
     chart: {
       id: "chart",
       type: "line",
-      height: 400
+      height: 400,
+      toolbar: {
+        tools: {
+          selection: false,
+          zoom: false,
+          zoomin: false,
+          zoomout: false,
+          pan: false,
+          reset: false
+        }
+      }
     },
     title: {
       text: "",

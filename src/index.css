@@ -3,10 +3,14 @@
 
 html {
   padding: 20px;
+  background-color: #F5F5F5;
 }
 
 .App {
   font-family: 'Lato', sans-serif;
+  position: relative;
+  padding: 5% 0;
+  background-color: #F5F5F5;
 }
 
 .heading {
